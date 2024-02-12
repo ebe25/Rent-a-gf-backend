@@ -1,0 +1,17 @@
+version: '11'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      
+      - POSTGRES_USER=rental_kanojoz
+      - POSTGRES_PASSWORD=rent_a_badwi
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes: 
+  postgres:
