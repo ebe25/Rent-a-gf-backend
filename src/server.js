@@ -1,9 +1,9 @@
 import Express from "express";
-
+import PORT from "./config/serverConfig";
 const startUpServer = () => {
   const app = Express();
-  app.listen(8000, () => {
-    console.log("Server is running", 8000);
+  app.listen(PORT, () => {
+    console.log("Server is running on ", PORT);
   });
 };
 
