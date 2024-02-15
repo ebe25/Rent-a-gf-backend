@@ -4,8 +4,9 @@ services:
   db:
     image: postgres
     restart: always
+    container_name: pgdb_container
     environment:
-      
+      - POSTGRES_DB=rental_kanojo
       - POSTGRES_USER=rental_kanojo
       - POSTGRES_PASSWORD=rent_a_badwi
     volumes:
