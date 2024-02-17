@@ -1,5 +1,5 @@
-import Sequelize from "sequelize";
-import dotenv from "dotenv";
+const {Sequelize} = require("sequelize");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const sequelize = new Sequelize(
@@ -14,4 +14,5 @@ const authenticate = async () => {
     console.error("Unable to connect to the database:", error);
   }
 };
-authenticate();
+
+module.exports = authenticate;

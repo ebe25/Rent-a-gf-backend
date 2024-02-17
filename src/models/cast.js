@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const {Model} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Cast extends Model {
     /**
@@ -13,17 +11,63 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Cast.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    costPerHour: DataTypes.INTEGER,
-    rating: DataTypes.INTEGER,
-    description: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Cast',
-  });
+  Cast.init(
+    {
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      lastName: {
+   
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail:true
+        }
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        validate:{
+          min: 18
+        }
+      },
+      costPerHour: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate:{
+          isNumeric: true
+        }
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+        validate:{
+          isNumeric: true
+        }
+      },
+      description: {
+        type: DataTypes.STRING,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Cast",
+    }
+  );
   return Cast;
 };
